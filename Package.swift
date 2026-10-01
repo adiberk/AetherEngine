@@ -51,7 +51,7 @@ let package = Package(
         // worked example: 1.1.0 shipped a tvOS floor raise as a minor, SwiftPM
         // floated every `from: "1.0.x"` consumer onto it and then failed on the
         // floor instead of backing off, so all of 5.x stopped resolving.
-        .package(url: "https://github.com/superuser404notfound/LibDovi", .upToNextMinor(from: "2.1.0")),  // 2.1.0: dolby_vision 3.4.0, header additive only (two new CMv4.0 metadata entry points, nothing removed); 2.0.0: visionOS (xros) device + simulator slices, declared tvOS floor corrected to 17.0 (was published as 1.1.0, withdrawn: a floor raise is breaking and broke every 5.x pin that floated onto it); 1.0.2: iOS slices + x86_64 (Intel Macs)
+        .package(url: "https://github.com/adiberk/LibDovi", exact: "2.1.0-hometv.1"),  // 2.1.0: dolby_vision 3.4.0, header additive only (two new CMv4.0 metadata entry points, nothing removed); 2.0.0: visionOS (xros) device + simulator slices, declared tvOS floor corrected to 17.0 (was published as 1.1.0, withdrawn: a floor raise is breaking and broke every 5.x pin that floated onto it); 1.0.2: iOS slices + x86_64 (Intel Macs)
     ],
     targets: [
         .target(

@@ -1,33 +1,24 @@
 {
-  "originHash" : "aaad2851e63fbb5d8035f6ae9c6abb71e8e010beeeb30d2f9dbbe60ccd7022f6",
-  "pins" : [
+  "originHash": "54ad53108312699df6f95d0f0aa3b22f513b17ebc8807c9e2e089364910c607a",
+  "pins": [
     {
-      "identity" : "ffmpegbuild",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/superuser404notfound/FFmpegBuild",
-      "state" : {
-        "revision" : "fda08325455bc12c112b5b82d014b98fa0fee0be",
-        "version" : "3.6.0"
+      "identity": "ffmpegbuild",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/superuser404notfound/FFmpegBuild",
+      "state": {
+        "revision": "fda08325455bc12c112b5b82d014b98fa0fee0be",
+        "version": "3.6.0"
       }
     },
     {
-      "identity" : "libdovi",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/superuser404notfound/LibDovi",
-      "state" : {
-        "revision" : "0d7cce1d6836a30d13a3a2326e50a153af53f014",
-        "version" : "2.1.0"
-      }
-    },
-    {
-      "identity" : "smbclient",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kishikawakatsumi/SMBClient",
-      "state" : {
-        "revision" : "e636c2b2458930770932a36d311ec9d478575b90",
-        "version" : "0.3.1"
+      "identity": "smbclient",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/kishikawakatsumi/SMBClient",
+      "state": {
+        "revision": "e636c2b2458930770932a36d311ec9d478575b90",
+        "version": "0.3.1"
       }
     }
   ],
-  "version" : 3
+  "version": 3
 }
