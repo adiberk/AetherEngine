@@ -43,6 +43,15 @@ final class GPUFrameConverter: @unchecked Sendable {
 
     private static let pageSize = Int(getpagesize())
 
+    /// Whether a frame's own pages can be handed to Metal without a copy. Not on a simulator: its Metal
+    /// driver (MTLSimDriver) shares a no-copy buffer with the host over XPC shared memory, which traps as
+    /// API misuse on the decoder's pool memory (`_xpc_shmem_create_with_prot`), so frames are copied there.
+    #if targetEnvironment(simulator)
+    private static let readsInPlace = false
+    #else
+    private static let readsInPlace = true
+    #endif
+
     /// Device, queue and pipelines, compiled once per process: every 10-bit AV1 open (each load, each still
     /// extractor) builds a converter, and a compile from source would sit on its time to first frame. A
     /// failure is kept too, so a shader that does not compile costs one attempt.
@@ -223,7 +232,7 @@ final class GPUFrameConverter: @unchecked Sendable {
 
         // In place: one AVBuffer holding every plane, starting on a page (dav1d's picture pool hands out
         // whole-page allocations at 4K). The GPU reads it through the same pages the decoder wrote.
-        if let ref = frame.pointee.buf.0, let base = ref.pointee.data {
+        if Self.readsInPlace, let ref = frame.pointee.buf.0, let base = ref.pointee.data {
             let start = Int(bitPattern: base), end = start + Int(ref.pointee.size)
             let inside = planes.allSatisfy { p in
                 let a = Int(bitPattern: p.0)
